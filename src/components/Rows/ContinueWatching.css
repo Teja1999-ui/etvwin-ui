@@ -1,0 +1,222 @@
+/* ===================== */
+/* CONTAINER */
+/* ===================== */
+
+.cw-container {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.cw-title {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+/* ===================== */
+/* SCROLL AREA */
+/* ===================== */
+
+.cw-posters {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 20px;
+  perspective: 1000px;
+}
+
+.cw-posters::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===================== */
+/* CARD */
+/* ===================== */
+
+.cw-card {
+  position: relative;
+  width: 330px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+
+  transform-style: preserve-3d;
+  transform-origin: center;
+
+  transition: transform 0.35s ease, opacity 0.3s ease;
+  will-change: transform;
+}
+
+/* IMAGE */
+.cw-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(20px);
+}
+
+/* ===================== */
+/* 🔥 FOCUS + ZOOM SYSTEM */
+/* ===================== */
+
+.cw-posters:hover .cw-card {
+  transform:
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    scale(0.9);
+}
+
+.cw-posters .cw-card:hover {
+  transform:
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    scale(1.1); /* adjust here */
+  z-index: 1000;
+}
+
+
+/* OPTIONAL SHADOW */
+.cw-card:hover {
+  box-shadow: 0 10px 50px rgb(196, 175, 191);
+}
+
+
+/* ===================== */
+/* OVERLAY */
+/* ===================== */
+
+.cw-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: 0.3s;
+
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.1)
+  );
+}
+
+.cw-card:hover .cw-overlay {
+  opacity: 1;
+}
+
+/* ===================== */
+/* PLAY BUTTON */
+/* ===================== */
+
+.cw-play {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+
+  background: white;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  transition: transform 0.2s ease;
+}
+
+.cw-play:hover {
+  transform: scale(1.1);
+}
+
+/* ===================== */
+/* DURATION */
+/* ===================== */
+
+.cw-duration {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+
+  font-size: 12px;
+  color: white;
+
+  background: rgba(0,0,0,0.6);
+  padding: 3px 8px;
+  border-radius: 6px;
+
+  z-index: 10;
+}
+
+/* ===================== */
+/* PROGRESS BAR */
+/* ===================== */
+
+.cw-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: rgba(255,255,255,0.2);
+}
+
+.cw-progress-fill {
+  height: 100%;
+  background: #e50914; /* Netflix red */
+}
+
+/* ===================== */
+/* ARROWS */
+/* ===================== */
+
+.cw-arrow {
+  position: absolute;
+  top: 56%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+
+  background: rgba(239, 239, 239, 0.6);
+  border: none;
+  cursor: pointer;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* SHOW ON HOVER */
+.cw-container:hover .cw-arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cw-arrow.left { left: 5px; }
+.cw-arrow.right { right: 5px; }
+
+.cw-arrow:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+
+.play-icon {
+  display: inline-block;
+  transform: translateY(4px); /* 🔥 move icon down */
+  padding-left: 3px;
+  padding-bottom: 2px;
+  padding-right: 1px;
+}

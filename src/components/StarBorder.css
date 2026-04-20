@@ -1,0 +1,72 @@
+.star-border-container {
+  position: relative;
+  display: inline-block;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* 🔥 HIDDEN BY DEFAULT */
+.border-gradient-top,
+.border-gradient-bottom {
+  display: none;
+}
+
+/* 🔥 SHINE BORDER LAYER */
+.star-border-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  padding: 1.5px; /* border thickness */
+
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(255,255,255,0.9),
+    transparent 80%
+  );
+
+  background-size: 200% 200%;
+  opacity: 0;
+
+  /* 🔥 MASK (makes it border only) */
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* 🔥 ACTIVATE ON HOVER */
+.star-border-container::before {
+  opacity: 1;
+  animation: rotateBorder 2s linear infinite;
+}
+
+/* 🔥 BUTTON STYLE */
+.inner-content {
+  position: relative;
+  background: #e50914;
+  color: white;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.3);
+  z-index: 1;
+}
+
+/* 🔥 MY LIST BUTTON */
+.info .inner-content {
+  background: rgba(255,255,255,0.1);
+}
+
+/* 🔥 ROTATION ANIMATION */
+@keyframes rotateBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}

@@ -1,0 +1,293 @@
+/* MAIN WRAPPER */
+.gc-main {
+  position: relative;
+  width: 100%;
+  height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* BASE CARD */
+.gc-card {
+  position: absolute;
+  width: 63%;
+  height: 90%;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-origin: center center; /* 🔥 IMPORTANT FIX */
+}
+
+.gc-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================= */
+/* 🔥 CENTER FIX (IMPORTANT) */
+/* ========================= */
+
+.gc-center {
+  left: 50%; /* ✅ REQUIRED */
+  transform: translateX(-50%) scale(1);
+  z-index: 3;
+}
+
+/* LEFT */
+.gc-left {
+  left: -44%;
+  transform: scale(0.85);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* RIGHT */
+.gc-right {
+  right: -44%;
+  transform: scale(0.85);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* OVERLAY */
+.gc-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 25px 20px;
+
+  backdrop-filter: blur(12px);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    transparent
+  );
+
+  color: white;
+}
+
+/* TEXT */
+.gc-info {
+  max-width: 65%;
+}
+
+.gc-overlay h2 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.gc-meta {
+  font-size: 18px;
+  opacity: 0.85;
+  margin-top: 3px;
+}
+
+.gc-desc {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* ACTION BUTTON WRAPPER */
+.gc-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  position: relative;
+  right: 32px;
+}
+
+/* REMOVE DEFAULT BORDERS */
+.gc-main .play,
+.gc-main .list {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.gc-main .play *,
+.gc-main .list * {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* PLAY BUTTON */
+.gc-main .play .inner-content {
+  background: #e50914 !important;
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* MY LIST BUTTON */
+.gc-main .list .inner-content {
+  background: #333 !important;
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* HOVER */
+.gc-main .play .inner-content:hover {
+  background: #f6121d;
+}
+
+.gc-main .list .inner-content:hover {
+  background: #444;
+}
+
+/* NAV BUTTONS */
+.gc-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.gc-nav.left {
+  left: 15px;
+}
+
+.gc-nav.right {
+  right: 15px;
+}
+
+/* ========================= */
+/* 🔥 ZOOM + SHADOW FIX */
+/* ========================= */
+
+.gc-center:hover {
+  transform: translateX(-50%) scale(1.03);
+
+  box-shadow:
+    0 0 20px rgba(196, 175, 191, 0.5),
+    0 0 50px rgba(196, 175, 191, 0.3),
+    0 0 100px rgba(196, 175, 191, 0.1),
+    0 20px 60px rgba(196, 175, 191, 0.6);
+}
+
+
+
+
+/* ARROWS */
+.gc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 100;
+
+  background: rgba(239, 239, 239, 0.6);
+  border: none;
+  color: rgb(1, 1, 1);
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+
+  /* 🔥 hidden by default */
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.3s ease;
+}
+
+/* SHOW ON HOVER (FIXED CLASS) */
+.gc-main:hover .gc-arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* LEFT */
+.gc-arrow.left {
+  left: 10px;
+}
+
+/* RIGHT */
+.gc-arrow.right {
+  right: 10px;
+}
+
+/* HOVER EFFECT */
+.gc-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+
+/* 🔥 FIX CENTER IMAGE CROPPING */
+.gc-center img {
+  object-position: 90% center; /* adjust if needed */
+}
+
+
+
+
+
+/* 🔥 TITLE LOGO */
+.gc-title-logo {
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 8px;
+  object-fit: contain;
+
+  /* premium look */
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+}
+
+/* 🔥 TEXT FALLBACK */
+.gc-title-text {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+
+/* WRAPPER */
+.gc-wrapper {
+  width: 100%;
+ 
+}
+
+/* HEADING */
+.gc-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+
+  margin-left: 30px;
+  margin-bottom: 10px;
+
+  transform: translateY(30px); /* 🔥 moves ONLY heading visually */
+}
+
+
+
+

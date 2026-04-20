@@ -1,0 +1,220 @@
+/* ROW */
+.row-container {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+/* TITLE */
+.row-title {
+  font-size: 20px;
+  margin-bottom: 1px;
+  margin-top: 0px;
+  margin-left: 20px;
+}
+
+/* SCROLL AREA */
+.row-container .row-posters {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 20px 0 20px 20px;
+  padding-right: 20px;
+  /* 🔥 ADD 3D DEPTH */
+  perspective: 1000px;
+}
+
+.row-posters::-webkit-scrollbar {
+  display: none;
+}
+
+/* 🔥 CARD */
+.row-container .row-card {
+  position: relative;
+  width: 210px;
+  height: 290px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+
+  transform-origin: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  /* 🔥 ADD 3D SUPPORT */
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* IMAGE (NO SCALE HERE) */
+.row-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+
+  /* 🔥 SLIGHT DEPTH */
+  transform: translateZ(20px);
+}
+
+.row-posters:hover .row-card {
+  transform:
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    scale(0.9);
+}
+
+.row-posters .row-card:hover {
+  transform:
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    scale(1.1); /* adjust here */
+  z-index: 1000;
+}
+
+
+/* OPTIONAL SHADOW */
+.row-card:hover {
+  box-shadow: 0 10px 40px rgb(196, 175, 191);
+}
+
+
+.row-container .cards {
+  perspective: 60px;
+}
+
+.row-container .card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+/* ARROWS */
+.row-arrow {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  z-index: 100;
+
+  background: rgba(239, 239, 239, 0.6);
+  border: none;
+  color: rgb(10, 2, 2);
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.row-container:hover .row-arrow {
+  opacity: 1;
+}
+
+.row-arrow.left {
+  left: 1px;
+}
+
+.row-arrow.right {
+  right: 1px;
+}
+
+.row-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+/* 🔥 HIDE ARROWS BY DEFAULT */
+.row-arrow {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* 🔥 SHOW ONLY ON HOVER */
+.row-container:hover .row-arrow {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1.05);
+}
+
+
+
+/* ========================= */
+/* 🔥 ATTACHED BOTTOM BOX */
+/* ========================= */
+
+
+/* 🔥 GRAY BOX */
+.card-info {
+  position: absolute;
+  left: 0;
+  width: 100%;
+
+  bottom: -50px;
+  padding: 20px 19px 20px;
+
+  /* 🔥 SAME AS TOP BANNER */
+  backdrop-filter: blur(12px);
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.5),
+    transparent
+  );
+
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+/* SHOW ON HOVER */
+.row-card:hover .card-info {
+  opacity: 1;
+  transform: translateY(0);
+  bottom: 0;
+}
+
+/* TITLE */
+.card-info h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  font-weight: 900; /* 🔥 semi-bold (recommended) */
+}
+/* META */
+.card-info p {
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+}
+
+/* BUTTONS */
+.card-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* PLAY BUTTON */
+.play-btn {
+  background: #e50914;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* LIST BUTTON */
+.list-btn {
+  background: #444;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+

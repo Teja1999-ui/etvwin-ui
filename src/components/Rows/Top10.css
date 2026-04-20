@@ -1,0 +1,349 @@
+body {
+  margin: 0;
+  background: black;
+  font-family: Arial;
+}
+
+/* ===== ROOT ===== */
+.top10-app {
+  width: 100%;
+}
+
+/* ===== BANNER ===== */
+.top10-app .banner {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  background-position: center 16%;
+  color: white;
+}
+
+/* LEFT DARK OVERLAY */
+.top10-app .banner-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.9) 25%,
+    rgba(0,0,0,0.75) 40%,
+    rgba(0,0,0,0.4) 65%,
+    transparent 85%
+  );
+}
+
+/* BOTTOM FADE */
+.top10-app .banner::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to top, black, transparent);
+}
+
+/* CONTENT */
+.top10-app .banner-content {
+  position: absolute;
+  bottom: 120px;
+  left: 60px;
+}
+
+/* LOGO */
+.top10-app .banner-logo {
+  width: 180px;
+  margin-bottom: 10px;
+}
+
+/* META */
+.top10-app .meta {
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+/* MAIN */
+.top10-app .banner-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* POSTER */
+.top10-app .poster {
+  position: relative;
+  width: 170px;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 30px rgb(196, 175, 191);
+
+  transition: all 0.3s ease; /* ✅ smooth */
+}
+
+/* 🔥 HOVER EFFECT */
+.top10-app .poster:hover {
+  transform: scale(1.06); /* slight zoom */
+
+  /* box-shadow:
+    0 6px 25px rgba(255, 184, 0, 0.5),
+    0 0 30px rgba(255, 184, 0, 0.35); */
+}
+
+.top10-app .poster img {
+  width: 100%;
+}
+
+/* ✅ BANNER #1 L-SHAPE */
+.top10-app .rank {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 6px 10px;
+  font-size: 15px;
+  font-weight: 800;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  border-right: 2px solid #ffb300d0;
+  border-bottom: 2px solid #ffb300d0;
+  border-top-left-radius: 10px;
+
+ 
+  box-shadow:
+    0 0 10px rgba(255, 187, 0, 0.935),
+    inset 0 0 6px rgb(255, 170, 0);
+
+  z-index: 5;
+}
+
+/* TEXT */
+.top10-app .banner-right {
+  max-width: 520px;
+}
+
+.top10-app .desc {
+  margin-top: 10px;
+  color: #eee;
+}
+
+/* BUTTONS */
+.top10-app .buttons {
+  margin-top: 15px;
+}
+
+.top10-app .play {
+  background: #e50914; 
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.top10-app .list {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+/* ===== TOP10 (MERGED) ===== */
+.top10-app .top10-container {
+  padding: 30px;
+  margin-top: -120px;
+  
+  color: white;
+  position: relative;
+  z-index: 5;
+  padding: 30px 0 30px 30px; /* 🔥 remove right padding */
+}
+
+/* TITLE */
+.top10-app .top10-container h2 {
+  margin-bottom: 15px;
+}
+
+/* ROW */
+.top10-app .top10-row {
+  display: flex;
+  gap: 19px;
+  overflow-x: auto;
+}
+
+.top10-app .top10-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.top10-app .top10-card {
+  position: relative;
+  min-width: 210px;
+  height: 270px;
+  border-radius: 14px;
+  overflow: hidden; /* 🔥 important for corner look */
+  transition: all 0.4s;
+  cursor: pointer;
+  padding-right: 0px;
+  flex-shrink: 0;
+  
+}
+
+.top10-app .top10-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ✅ L-SHAPE NUMBER (TOP10) */
+.top10-app .top10-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 6px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.6);
+
+   border-right: 2px solid #ffb300d0;
+  border-bottom: 2px solid #ffb300d0;
+  border-top-left-radius: 10px;
+
+ 
+  box-shadow:
+    0 0 10px rgba(255, 187, 0, 0.935),
+    inset 0 0 6px rgb(255, 170, 0);
+
+  z-index: 5;
+}
+
+/* ACTIVE */
+.top10-app .top10-card.active {
+ box-shadow: 0 10px 50px rgb(196, 175, 191);
+}
+
+/* DIM */
+.top10-app .top10-card.dim {
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+
+
+
+/* ARROWS */
+.top10-arrow {
+  position: absolute;
+  top: 52%;
+  transform: translateY(-50%);
+  z-index: 100;
+
+  background: rgba(239, 239, 239, 0.6);
+  border: none;
+  color: rgb(10, 2, 2);
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.top10-container:hover .top10-arrow {
+  opacity: 1;
+}
+
+.top10-arrow.left {
+  left: 30px;
+}
+
+.top10-arrow.right {
+  right: 1px;
+}
+
+.top10-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+/* 🔥 HIDE ARROWS BY DEFAULT */
+.top10-arrow {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* 🔥 SHOW ONLY ON HOVER */
+.top10-container:hover .top10-arrow {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1.05);
+}
+
+
+/* PLAY BUTTON */
+.top10-app .play .inner-content {
+  background: #e50914 !important;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+/* MY LIST BUTTON (GRAY) */
+.top10-app .list .inner-content {
+  background: #333 !important;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+
+
+
+/* BASE */
+.gc-card {
+  position: absolute;
+  width: 63%;
+  height: 90%;
+  border-radius: 20px;
+  overflow: hidden;
+
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* CENTER */
+.gc-card.active {
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  z-index: 3;
+  opacity: 1;
+}
+
+/* LEFT */
+.gc-card.prev {
+  left: 50%;
+  transform: translateX(-140%) scale(0.85);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* RIGHT */
+.gc-card.next {
+  left: 50%;
+  transform: translateX(40%) scale(0.85);
+  opacity: 0.5;
+  z-index: 1;
+}
